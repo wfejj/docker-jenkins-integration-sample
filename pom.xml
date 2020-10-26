@@ -9,8 +9,7 @@
          <properties>
 <maven.compiler.source>1.6</maven.compiler.source>
 <maven.compiler.target>1.6</maven.compiler.target>
-</properties>  
-        
+</properties>       
          <dependencies>
     <dependency>
       <groupId>junit</groupId>
@@ -18,8 +17,7 @@
       <version>3.8.1</version>
       <scope>test</scope>
     </dependency>
-  </dependencies>  
-         
+  </dependencies>          
          <build>
     <plugins>
         <plugin>
@@ -44,8 +42,28 @@
             </execution>
         </executions>
     </plugin>
-<plugins>
-    <plugin>
+        <plugin>
+            <groupId>com.spotify</groupId>
+            <artifactId>dockerfile-maven-plugin</artifactId>
+            <version>1.4.10</version>
+            <executions>
+                <execution>
+                    <id>default</id>
+                    <goals>
+                        <goal>build</goal>
+                        <goal>push</goal>
+                    </goals>
+                </execution>
+            </executions>
+            <configuration>
+                <repository>wfejj/docker-jenkins-integration-sample</repository>
+                <tag>${project.version}</tag>
+                <buildArgs>
+                    <JAR_FILE>${project.build.finalName}.jar</JAR_FILE>
+                </buildArgs>
+            </configuration>
+        </plugin>
+                 <plugin>
       <!-- Build an executable JAR -->
       <groupId>org.apache.maven.plugins</groupId>
       <artifactId>maven-jar-plugin</artifactId>
@@ -60,7 +78,7 @@
         </archive>
       </configuration>
     </plugin>
-  </plugins>     
+             
     </plugins>
     <finalName>docker-jenkins-integration-sample</finalName>
 </build>
