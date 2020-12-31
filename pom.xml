@@ -19,9 +19,8 @@
     </dependency>
   </dependencies>          
          <build>
-    <plugins>
-      
-                 <plugin>
+    <plugins> 
+      <plugin>
       <!-- Build an executable JAR -->
       <groupId>org.apache.maven.plugins</groupId>
       <artifactId>maven-jar-plugin</artifactId>
@@ -35,13 +34,8 @@
           </manifest>
         </archive>
       </configuration>
-    </plugin>
-             
+    </plugin>          
     </plugins>
     <finalName>docker-jenkins-integration-sample</finalName>
 </build>
-         
-         
-         
-
 </project>
